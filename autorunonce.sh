@@ -43,6 +43,6 @@ if [ -z "$CUR_GPU_MEM" ] || [ "$CUR_GPU_MEM" -lt 128 ]; then
   set_config_var gpu_mem 128 /boot/config.txt
 fi
 sed /boot/config.txt -i -e "s/^startx/#startx/"
-sed /boot/config.txt -i -e "s/^fixup_file/#fixup_file/
+sed /boot/config.txt -i -e "s/^fixup_file/#fixup_file/"
 
 reboot
