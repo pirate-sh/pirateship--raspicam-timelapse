@@ -45,4 +45,20 @@ fi
 sed /boot/config.txt -i -e "s/^startx/#startx/"
 sed /boot/config.txt -i -e "s/^fixup_file/#fixup_file/"
 
+# create camera.sh
+echo "#!/bin/bash" > camera.sh
+echo "" >> camera.sh
+echo "DATE=\$(date +'%Y-%m-%d_%H%M%S')" >> camera.sh
+echo "raspistill -vf -hf -o /data/timelaps/\$DATE.jpg" >> camera.sh
+
+# create autrun.sh
+echo "#!/bin/bash" > autorun.sh
+echo "" >> autorun.sh
+echo "#move exsisting timelaps folder to ??? -> FIXME" >> autorun.sh
+echo "" >> autorun.sh
+echo "# create timelaps folder" >> autorun.sh
+echo "mkdir -p /data/timelaps/" >> autorun.sh
+echo "" >> autorun.sh
+echo "watch -n15 "/data/camera.sh"" >> autorun.sh
+
 reboot
